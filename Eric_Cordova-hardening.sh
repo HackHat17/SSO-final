@@ -90,6 +90,14 @@ then
 		else 
 			tput setaf 2;
 			echo "El paquete ya está instalado: ClamAV "
+			echo "removiendo ClamAV"
+			yum remove clamav
+			yum remove clamav-devel
+			echo ""
+			echo "Instalando la ultima version del paquete: ClamAV"
+			echo ""
+			yum -y install clamav clamav-devel
+			echo "Paquete instalado: ClamAV"
 			echo ""
 			tput sgr 0;
 		fi
@@ -104,15 +112,10 @@ then
 
 
 
-		echo "presione enter para actualizar"
-		read -p "presione cualquier otra tecla para cancelar: " ack
-		if [[ -z "$ack" ]];
-		then
+		
 			echo "buscando actualizaciones"
 			yum update
-		else 
-			echo "actualización cancelada"
-		fi
+		
 fi
 
 
@@ -155,6 +158,13 @@ then
 		else 
 			tput setaf 2;
 			echo "El paquete ya está instalado: ClamAV"
+			echo ""
+			echo "removiendo ClamAV"
+			apt-get remove clamav clamav-daemon
+			echo "Instalandola ultima version del paquete: ClamAV"
+			echo ""
+			apt-get install clamav clamav-daemon -y
+			echo "Paquete instalado: ClamAV"
 			echo ""
 			tput sgr 0;
 		fi
